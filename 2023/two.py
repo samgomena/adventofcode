@@ -28,10 +28,7 @@ def _parse_line_part_one(line: str):
 
 
 def _parse_line_part_two(line: str):
-    # Lines in the form of:
-    # Game <game id>: <num> red, <num> green, <num> blue; <num> green, <num> red, <num> blue; <num> blue, <num> green, <num> red; <num> blue, <num> green, <num> red
-    game_id = int(line.split(":")[0].split(" ")[1])
-    minimums = {
+    minimum_cubes_reqd = {
         "red": 0,
         "green": 0,
         "blue": 0,
@@ -40,9 +37,9 @@ def _parse_line_part_two(line: str):
         sets = game.strip().split(", ")
         for set in sets:
             count, color = set.split(" ")
-            if int(count) > minimums[color]:
-                minimums[color] = int(count)
-    return minimums
+            if int(count) > minimum_cubes_reqd[color]:
+                minimum_cubes_reqd[color] = int(count)
+    return minimum_cubes_reqd
 
 
 def part_one(contents: list[str]):
